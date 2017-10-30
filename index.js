@@ -42,7 +42,7 @@ function displayCommits(){
 }
 
 function getBranches(el){
-  const name = el.dataset.repository
+  const repoName = el.dataset.repository
   const username = el.dataset.username
   const req = new XMLHttpRequest()
 
@@ -52,13 +52,7 @@ function getBranches(el){
 }
 
 function displayBranches(){
-  let branches = JSON.parse(this.responseText)
-  console.log(branches)
-  const branchList = `<ul>${branches.map(b =>
-    '<li>' +
-      b.name + '<br>' +
-    '</li>'
-  ).join('')}</ul>`
-
-  document.getElementById("details").innerHTML = branchList
+  const branches = JSON.parse(this.responseText)
+  const branchList = `<ul>${branches.map(branch => '<li>' + branch.name + '</li>').join('')}</ul>`
+  document.getElementById("details").innerHTML = branchesList
 }
