@@ -25,7 +25,7 @@ function displayRepositories(event, data){
 }
 
 function getCommits(el){
-  const name = el.dataset.repository
+  const repoName = el.dataset.repository
   const username = el.dataset.username
   const req = new XMLHttpRequest()
 
@@ -35,17 +35,10 @@ function getCommits(el){
 }
 
 function displayCommits(){
-  let commits = JSON.parse(this.responseText)
-
-  const commitList = `<ul${commits.map(c =>
-    '<li>' +
-      c.commit.author.name + '<br>' +
-      c.author.login + '<br>' +
-      c.commit.message +
-    '</li>'
-  ).join('')}</ul>`
-
-  document.getElementById("details").innerHTML = commitList
+  const commits = JSON.parse(this.responseText)
+  const commitsList = `<ul${commits.map(commit => '<li><h3>' + commit.commit.author.name +
+  ' (' + commit.author.login + ')</h3>' + commit.commit.message + '</li>').join('')}</ul>`
+  document.getElementById("details").innerHTML = commitsList
 }
 
 function getBranches(el){
