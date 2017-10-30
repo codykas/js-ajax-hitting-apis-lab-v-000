@@ -30,7 +30,7 @@ function getCommits(el){
   const req = new XMLHttpRequest()
 
   req.addEventListener("load", displayCommits)
-  req.open("GET", `https://api.github.com/repos/${username}/${name}/commits`)
+  req.open("GET", `https://api.github.com/repos/${username}/${repoName}/commits`)
   req.send()
 }
 
@@ -47,7 +47,7 @@ function getBranches(el){
   const req = new XMLHttpRequest()
 
   req.addEventListener("load", displayBranches)
-  req.open("GET", `https://api.github.com/repos/${username}/${name}/branches`)
+  req.open("GET", `https://api.github.com/repos/${username}/${repoName}/branches`)
   req.send()
 }
 
