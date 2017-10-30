@@ -1,14 +1,13 @@
 function getRepositories(){
   const req = new XMLHttpRequest()
-  let username = document.getElementById('username').value
+  const username = document.getElementById('username').value
   req.addEventListener("load", displayRepositories)
   req.open('GET', `https://api.github.com/users/${username}/repos`)
   req.send()
 }
 
 function displayRepositories(event, data){
-  let repos = JSON.parse(this.responseText)
-  console.log(repos)
+  const repos = JSON.parse(this.responseText)
   const repoList = "<ul>" + repos.map(repo => {
     const dataUsername = 'data-username="' + repo.owner.login + '"'
     const dataRepoName = 'data-repository="' + repo.name + '"'
